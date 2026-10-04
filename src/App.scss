@@ -1,1 +1,10 @@
-// not empty
+@import './styles/theme';
+@import './styles/fonts';
+
+body {
+  font-family: Mont, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
