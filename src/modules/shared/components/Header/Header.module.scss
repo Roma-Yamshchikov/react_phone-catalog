@@ -1,3 +1,5 @@
+@import '../../../../styles/mixins';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -5,7 +7,6 @@
   height: 48px;
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
-
 }
 
 .menuButton {
@@ -16,6 +17,10 @@
   height: 48px;
   width: 48px;
   border-left: 1px solid var(--color-border);
+
+  @include on-tablet {
+    display: none;
+  }
 }
 
 .menuIcon {
@@ -26,9 +31,59 @@
 .logo {
   display: flex;
   padding: 13px 16px;
+  margin-right: 24px;
 }
 
 .logoImage {
   width: 64px;
 }
 
+.nav {
+  display: none;
+  margin-right: auto;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &List {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &Link {
+    @include uppercase;
+
+    text-decoration: none;
+    color: var(--color-text-secondary);
+  }
+}
+
+.action {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &Link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid var(--color-border);
+  }
+
+  &Item {
+    height: 16px;
+    width: 16px;
+  }
+}
