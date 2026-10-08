@@ -51,7 +51,8 @@
     }
   }
 
-  &:hover .logoImage {
+  &:hover .logoImage,
+  &:focus-visible .logoImage {
     transform: scale(1.2);
   }
 }
@@ -100,7 +101,9 @@
       transition: transform 0.3s;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible,
+    &Active {
       color: var(--color-text);
 
       &::after {
@@ -136,7 +139,8 @@
       width: 64px;
     }
 
-    &:hover .actionItem {
+    &:hover .actionItem,
+    &:focus-visible .actionItem {
       transform: scale(1.3);
     }
   }

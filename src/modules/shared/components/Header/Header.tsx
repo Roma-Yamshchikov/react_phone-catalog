@@ -1,56 +1,62 @@
+import { NavLink, Link } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './Header.module.scss';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
+};
 
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <a href="/" className={styles.logo}>
+      <Link to="/" className={styles.logo}>
         <img
           src="/img-logo-icons/logo.svg"
-          alt="logo Nice Gadgets"
+          alt="Nice Gadgets"
           className={styles.logoImage}
         />
-      </a>
+      </Link>
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem}>
-            <a href="/" className={styles.navLink}>
+          <li>
+            <NavLink to="/" className={getLinkClass}>
               Home
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.navItem}>
-            <a href="/phones" className={styles.navLink}>
+          <li>
+            <NavLink to="/phones" className={getLinkClass}>
               Phones
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.navItem}>
-            <a href="/tablets" className={styles.navLink}>
+          <li>
+            <NavLink to="/tablets" className={getLinkClass}>
               Tablets
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.navItem}>
-            <a href="/accessories" className={styles.navLink}>
+          <li>
+            <NavLink to="/accessories" className={getLinkClass}>
               Accessories
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
 
       <div className={styles.action}>
-        <a href="/favorites" className={styles.actionLink}>
+        <Link to="/favorites" className={styles.actionLink}>
           <img
             className={styles.actionItem}
             src="/img-logo-icons/icons/icon-favourites-Heart-like.svg"
             alt="Favorites"
           />
-        </a>
-        <a href="/cart" className={styles.actionLink}>
+        </Link>
+        <Link to="/cart" className={styles.actionLink}>
           <img
             className={styles.actionItem}
             src="/img-logo-icons/icons/icon-shopping-Cart.svg"
             alt="Cart"
           />
-        </a>
+        </Link>
       </div>
 
       <button type="button" className={styles.menuButton}>
