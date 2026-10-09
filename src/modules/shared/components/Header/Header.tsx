@@ -1,12 +1,18 @@
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
+import { Menu } from '../Menu';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
 };
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
@@ -59,13 +65,19 @@ export const Header = () => {
         </Link>
       </div>
 
-      <button type="button" className={styles.menuButton}>
+      <button
+        type="button"
+        className={styles.menuButton}
+        onClick={() => setIsMenuOpen(true)}
+      >
         <img
           src="/img-logo-icons/icons/icon-menu-burger.svg"
           alt="Open menu"
           className={styles.menuIcon}
         />
       </button>
+
+      <Menu isOpen={isMenuOpen} onClose={closeMenu} />
     </header>
   );
 };

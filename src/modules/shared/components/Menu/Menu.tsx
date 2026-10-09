@@ -1,6 +1,12 @@
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
+
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+};
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -8,18 +14,18 @@ const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
 const getBottomLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.bottomLink, { [styles.bottomLinkActive]: isActive });
 
-export const Menu = () => {
+export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
-    <div className={styles.menu}>
+    <div className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
       <div className={styles.top}>
-        <Link to="/" className={styles.topLogo}>
+        <Link to="/" className={styles.topLogo} onClick={onClose}>
           <img
             src="/img-logo-icons/logo.svg"
             alt="Nice Gadgets"
             className={styles.topLogoImage}
           />
         </Link>
-        <button className={styles.topClose} type="button">
+        <button className={styles.topClose} type="button" onClick={onClose}>
           <img
             src="/img-logo-icons/icons/icon-close.svg"
             alt="Close menu"
@@ -30,23 +36,31 @@ export const Menu = () => {
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li>
-            <NavLink to="/" className={getNavLinkClass}>
+          <li className={styles.navItem}>
+            <NavLink to="/" className={getNavLinkClass} onClick={onClose}>
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/phones" className={getNavLinkClass}>
+          <li className={styles.navItem}>
+            <NavLink to="/phones" className={getNavLinkClass} onClick={onClose}>
               Phones
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/tablets" className={getNavLinkClass}>
+          <li className={styles.navItem}>
+            <NavLink
+              to="/tablets"
+              className={getNavLinkClass}
+              onClick={onClose}
+            >
               Tablets
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/accessories" className={getNavLinkClass}>
+          <li className={styles.navItem}>
+            <NavLink
+              to="/accessories"
+              className={getNavLinkClass}
+              onClick={onClose}
+            >
               Accessories
             </NavLink>
           </li>
@@ -54,14 +68,18 @@ export const Menu = () => {
       </nav>
 
       <div className={styles.bottom}>
-        <NavLink to="/favorites" className={getBottomLinkClass}>
+        <NavLink
+          to="/favorites"
+          className={getBottomLinkClass}
+          onClick={onClose}
+        >
           <img
             src="/img-logo-icons/icons/icon-favourites-Heart-like.svg"
             alt="Favorites"
             className={styles.bottomIcon}
           />
         </NavLink>
-        <NavLink to="/cart" className={getBottomLinkClass}>
+        <NavLink to="/cart" className={getBottomLinkClass} onClick={onClose}>
           <img
             src="/img-logo-icons/icons/icon-shopping-Cart.svg"
             alt="Cart"
