@@ -1,0 +1,72 @@
+@import '../../../../styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+  border-top: 1px solid var(--color-border);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+.logo {
+  display: flex;
+}
+
+.nav {
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 50px;
+    }
+
+    @include on-desktop {
+      gap: 105px;
+    }
+  }
+
+  &Link {
+    @include uppercase;
+
+    text-decoration: none;
+    color: var(--color-text);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &Text {
+    @include small-text;
+
+    color: var(--color-text-secondary);
+  }
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-secondary);
+    height: 32px;
+    width: 32px;
+  }
+}

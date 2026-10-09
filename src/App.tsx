@@ -1,12 +1,13 @@
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer';
 
 export const App = () => (
   <div className="App">
     <Header />
 
-    <main>
+    <main className="main">
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/phones" element={<h1>Phones</h1>} />
@@ -17,5 +18,7 @@ export const App = () => (
         <Route path="*" element={<h1>Error</h1>} />
       </Routes>
     </main>
+
+    <Footer />
   </div>
 );
