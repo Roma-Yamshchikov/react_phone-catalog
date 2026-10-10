@@ -1,17 +1,20 @@
 @import '../../../../styles/mixins';
 
-.footer {
+.containerFooter {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 32px 16px;
-  border-top: 1px solid var(--color-border);
 
   @include on-tablet {
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
+}
+
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .logo {
@@ -20,16 +23,18 @@
 
 .nav {
   &List {
+    @include uppercase;
+
     display: flex;
     flex-direction: column;
-    gap: 16px;
     list-style: none;
     padding: 0;
     margin: 0;
+    gap: 16px;
 
     @include on-tablet {
       flex-direction: row;
-      gap: 50px;
+      gap: 70px;
     }
 
     @include on-desktop {
@@ -38,8 +43,6 @@
   }
 
   &Link {
-    @include uppercase;
-
     text-decoration: none;
     color: var(--color-text);
   }
