@@ -1,0 +1,101 @@
+@import '../../../../styles/mixins';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+  background-color: var(--color-bg-card);
+
+  &ImageWrapper {
+    height: 196px;
+  }
+
+  &Image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
+
+  &Title {
+    margin: 0;
+    font: inherit;
+    min-height: 42px;
+  }
+
+  &Prices {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &Price {
+    @include h3;
+
+    margin: 0;
+  }
+
+  &FullPrice {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &Specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  &Spec {
+    @include small-text;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &SpecName {
+    color: var(--color-text-secondary);
+  }
+
+  &Actions {
+    display: flex;
+    height: 40px;
+    gap: 8px;
+  }
+
+  &AddButton {
+    @include buttons;
+
+    flex-grow: 1;
+    background-color: var(--color-accent);
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-family: inherit;
+  }
+
+  &FavoriteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    background-color: var(--color-bg-secondary);
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+    &Image {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
