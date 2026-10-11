@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.catalogPage {
+  padding-top: 24px;
+
+  &Title {
+    @include h1;
+
+    margin: 0;
+  }
+
+  &Count {
+    margin: 8px 0 0;
+    color: var(--color-text-secondary);
+  }
+
+  &List {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+}

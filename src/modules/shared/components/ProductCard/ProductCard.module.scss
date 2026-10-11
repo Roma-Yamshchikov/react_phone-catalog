@@ -81,6 +81,17 @@
     cursor: pointer;
     color: var(--color-text);
     font-family: inherit;
+    transition: background-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+      }
+    }
   }
 
   &FavoriteButton {
@@ -92,6 +103,17 @@
     padding: 0;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-bg-secondary-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-bg-secondary-hover);
+      }
+    }
 
     &Image {
       width: 16px;

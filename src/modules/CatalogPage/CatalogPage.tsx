@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import styles from './CatalogPage.module.scss';
 import { Category, Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import { ProductCard } from '../shared/components/ProductCard';
@@ -23,11 +24,14 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   }, [category]);
 
   return (
-    <div>
-      <h1>{title}</h1>
-      {products.map(product => {
-        return <ProductCard key={product.id} product={product} />;
-      })}
+    <div className={styles.catalogPage}>
+      <h1 className={styles.catalogPageTitle}>{title}</h1>
+      <p className={styles.catalogPageCount}>{products.length} models</p>
+      <div className={styles.catalogPageList}>
+        {products.map(product => {
+          return <ProductCard key={product.id} product={product} />;
+        })}
+      </div>
     </div>
   );
 };

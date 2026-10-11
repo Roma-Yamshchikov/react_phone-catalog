@@ -3,9 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from './modules/shared/components/Header';
 import { Footer } from './modules/shared/components/Footer';
 import { CatalogPage } from './modules/CatalogPage';
+import { ScrollToTop } from './modules/shared/components/ScrollToTop';
 
 export const App = () => (
   <div className="App">
+    <ScrollToTop />
     <Header />
 
     <main className="main">
