@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../../types/Product';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -9,15 +10,25 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <article className={styles.productCard}>
-      <div className={styles.productCardImageWrapper}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.productCardImageWrapper}
+      >
         <img
           src={product.image}
           alt={product.name}
           className={styles.productCardImage}
         />
-      </div>
+      </Link>
 
-      <h3 className={styles.productCardTitle}>{product.name}</h3>
+      <h3 className={styles.productCardTitle}>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className={styles.productCardTitleLink}
+        >
+          {product.name}
+        </Link>
+      </h3>
       <div className={styles.productCardPrices}>
         <p className={styles.productCardPrice}>${product.price}</p>
         <s className={styles.productCardFullPrice}>${product.fullPrice}</s>
