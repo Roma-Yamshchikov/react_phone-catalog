@@ -4,6 +4,7 @@ import styles from './CatalogPage.module.scss';
 import { Category, Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import { ProductCard } from '../shared/components/ProductCard';
+import { NavPath } from '../shared/components/NavPath';
 
 type Props = {
   category: Category;
@@ -23,8 +24,11 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
     });
   }, [category]);
 
+  const categoryLabel = category[0].toUpperCase() + category.slice(1);
+
   return (
     <div className={styles.catalogPage}>
+      <NavPath items={[{ label: categoryLabel }]} />
       <h1 className={styles.catalogPageTitle}>{title}</h1>
       <p className={styles.catalogPageCount}>{products.length} models</p>
       <div className={styles.catalogPageList}>

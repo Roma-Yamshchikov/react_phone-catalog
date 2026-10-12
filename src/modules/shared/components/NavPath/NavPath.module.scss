@@ -1,0 +1,28 @@
+@import '../../../../styles/mixins';
+
+.navPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &Home {
+    display: flex;
+  }
+
+  &HomeIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &Arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  &Current {
+    @include small-text;
+
+    padding-top: 3px;
+    color: var(--color-text-secondary);
+  }
+}

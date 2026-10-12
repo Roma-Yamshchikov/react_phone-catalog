@@ -6,7 +6,11 @@
   &Title {
     @include h1;
 
-    margin: 0;
+    margin: 24px 0 0;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
   }
 
   &Count {
