@@ -19,6 +19,14 @@
     width: 16px;
   }
 
+  &Link {
+    @include small-text;
+
+    text-decoration: none;
+    color: var(--color-text);
+    padding-top: 3px;
+  }
+
   &Current {
     @include small-text;
 

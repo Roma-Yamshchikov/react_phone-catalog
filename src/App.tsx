@@ -4,6 +4,7 @@ import { Header } from './modules/shared/components/Header';
 import { Footer } from './modules/shared/components/Footer';
 import { CatalogPage } from './modules/CatalogPage';
 import { ScrollToTop } from './modules/shared/components/ScrollToTop';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
@@ -30,6 +31,9 @@ export const App = () => (
           />
           <Route path="/favorites" element={<h1>Favorites</h1>} />
           <Route path="/cart" element={<h1>Cart</h1>} />
+
+          <Route path="/:category/:itemId" element={<ProductDetailsPage />} />
+
           <Route path="*" element={<h1>Error</h1>} />
         </Routes>
       </div>

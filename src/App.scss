@@ -16,6 +16,9 @@ body {
   color: var(--color-text);
 }
 
+// Sticky footer: footer is always at the bottom,
+// even when the page content is short.
+// .main gets flex-grow: 1 and takes the free space.
 .App {
   display: flex;
   flex-direction: column;
@@ -26,6 +29,9 @@ body {
   flex-grow: 1;
 }
 
+// Global container: limits content width and centers it.
+// Use it INSIDE blocks (header, footer, main) so their
+// background and borders stay full width.
 .container {
   padding: 0 16px;
   max-width: 1200px;

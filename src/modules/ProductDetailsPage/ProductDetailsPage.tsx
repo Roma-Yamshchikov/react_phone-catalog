@@ -1,0 +1,56 @@
+import { useParams, useNavigate } from 'react-router-dom';
+import styles from './ProductDetailsPage.module.scss';
+import { useEffect, useState } from 'react';
+import { ProductDetails } from '../../types/ProductDetails';
+import { getProductDetails } from '../../api/products';
+import { NavPath } from '../shared/components/NavPath';
+import { ProductGallery } from './components/ProductGallery';
+
+export const ProductDetailsPage = () => {
+  const { category, itemId } = useParams();
+  const navigate = useNavigate();
+
+  const [productDetails, setProductDetails] = useState<ProductDetails>();
+
+  useEffect(() => {
+    if (!category || !itemId) {
+      return;
+    }
+
+    getProductDetails(category, itemId).then(setProductDetails);
+  }, [category, itemId]);
+
+  const categoryLabel = category
+    ? category[0].toUpperCase() + category.slice(1)
+    : '';
+
+  if (!productDetails) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <div className={styles.productDetails}>
+      <NavPath
+        items={[
+          { label: categoryLabel, to: `/${category}` },
+          { label: productDetails.name },
+        ]}
+      />
+
+      <button
+        type="button"
+        className={styles.productDetailsBack}
+        onClick={() => navigate(-1)}
+      >
+        <span aria-hidden="true" className={styles.productDetailsBackImage} />
+        <span className={styles.productDetailsBackText}>Back</span>
+      </button>
+
+      <h1 className={styles.productDetailsTitle}>{productDetails.name}</h1>
+      <ProductGallery
+        images={productDetails.images}
+        name={productDetails.name}
+      />
+    </div>
+  );
+};

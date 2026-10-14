@@ -1,0 +1,55 @@
+@import '../../styles/mixins';
+
+.productDetails {
+  padding-top: 24px;
+
+  &Back {
+    @include small-text;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    padding: 0;
+    margin-top: 24px;
+    color: var(--color-text);
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &Image {
+      width: 16px;
+      height: 16px;
+      background-color: currentColor;
+      mask-image: url('/img-logo-icons/icons/arrow-left.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+    &Text {
+      padding-top: 3px;
+    }
+
+    &:focus-visible {
+      color: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &Title {
+    @include h2;
+
+    margin: 16px 0 0;
+  }
+}

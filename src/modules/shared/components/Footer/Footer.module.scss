@@ -45,6 +45,18 @@
   &Link {
     text-decoration: none;
     color: var(--color-text);
+    display: inline-block;
+    transition: transform 0.3s;
+
+    &:focus-visible {
+      transform: scale(1.1);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
 
@@ -62,6 +74,7 @@
     @include small-text;
 
     color: var(--color-text-secondary);
+    transition: transform 0.3s;
   }
 
   &Button {
@@ -71,5 +84,24 @@
     background-color: var(--color-bg-secondary);
     height: 32px;
     width: 32px;
+    transition: background-color 0.3s;
+  }
+
+  &:focus-visible &Text {
+      transform: scale(1.1);
+    }
+
+  &:focus-visible &Button {
+    background-color: var(--color-bg-secondary-hover);
+  }
+
+  @media (hover: hover) {
+    &:hover &Button {
+      background-color: var(--color-bg-secondary-hover);
+    }
+
+    &:hover &Text {
+      transform: scale(1.1);
+    }
   }
 }
