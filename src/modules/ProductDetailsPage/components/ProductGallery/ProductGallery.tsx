@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ProductGallery.module.scss';
+import classNames from 'classnames';
 
 type Props = {
   images: string[];
@@ -22,7 +23,9 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
           <li key={index} className={styles.productGalleryItem}>
             <button
               type="button"
-              className={styles.productGalleryButton}
+              className={classNames(styles.productGalleryButton, {
+                [styles.productGalleryButtonActive]: index === selectedIndex,
+              })}
               onClick={() => setSelectedIndex(index)}
             >
               <img

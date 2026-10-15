@@ -50,6 +50,10 @@
   &Title {
     @include h2;
 
-    margin: 16px 0 0;
+    margin: 16px 0 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 }
