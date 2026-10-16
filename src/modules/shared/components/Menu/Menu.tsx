@@ -20,14 +20,14 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
       <div className={styles.top}>
         <Link to="/" className={styles.topLogo} onClick={onClose}>
           <img
-            src="/img-logo-icons/logo.svg"
+            src="img-logo-icons/logo.svg"
             alt="Nice Gadgets"
             className={styles.topLogoImage}
           />
         </Link>
         <button className={styles.topClose} type="button" onClick={onClose}>
           <img
-            src="/img-logo-icons/icons/icon-close.svg"
+            src="img-logo-icons/icons/icon-close.svg"
             alt="Close menu"
             className={styles.topCloseIcon}
           />
@@ -74,14 +74,14 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={onClose}
         >
           <img
-            src="/img-logo-icons/icons/icon-favourites-Heart-like.svg"
+            src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
             alt="Favorites"
             className={styles.bottomIcon}
           />
         </NavLink>
         <NavLink to="/cart" className={getBottomLinkClass} onClick={onClose}>
           <img
-            src="/img-logo-icons/icons/icon-shopping-Cart.svg"
+            src="img-logo-icons/icons/icon-shopping-Cart.svg"
             alt="Cart"
             className={styles.bottomIcon}
           />

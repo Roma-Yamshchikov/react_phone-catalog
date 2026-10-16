@@ -5,6 +5,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails } from '../../api/products';
 import { NavPath } from '../shared/components/NavPath';
 import { ProductGallery } from './components/ProductGallery';
+import { ProductOptions } from './components/ProductOptions';
 
 export const ProductDetailsPage = () => {
   const { category, itemId } = useParams();
@@ -51,6 +52,8 @@ export const ProductDetailsPage = () => {
         images={productDetails.images}
         name={productDetails.name}
       />
+
+      <ProductOptions product={productDetails} />
     </div>
   );
 };

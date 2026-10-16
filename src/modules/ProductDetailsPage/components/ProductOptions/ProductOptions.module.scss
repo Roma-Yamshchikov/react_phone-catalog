@@ -1,0 +1,167 @@
+@import '../../../../styles/mixins';
+
+.productOptions {
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &Label {
+    @include small-text;
+
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  &Colors {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &Color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 0 0 1px var(--color-border);
+
+    &Active {
+      box-shadow: 0 0 0 1px var(--color-text);
+    }
+  }
+
+  &Section {
+    padding: 24px 0;
+    margin: 24px 0 32px;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &Capacities {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin: 8px 0 0;
+    list-style: none;
+  }
+
+  &Capacity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 7px 8px 4px;
+  }
+
+  &CapacityActive {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+  }
+
+  &Prices {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  &Price {
+    margin: 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &FullPrice {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+  }
+
+  &Actions {
+    display: flex;
+    height: 48px;
+    gap: 8px;
+    margin: 16px 0 32px;
+  }
+
+  &AddButton {
+    @include buttons;
+
+    flex-grow: 1;
+    background-color: var(--color-accent);
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-family: inherit;
+    transition: background-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+      }
+    }
+  }
+
+  &FavoriteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    background-color: var(--color-bg-secondary);
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-bg-secondary-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-bg-secondary-hover);
+      }
+    }
+
+    &Image {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &Specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &Spec {
+    @include small-text;
+
+    display: flex;
+    justify-content: space-between;
+
+    &Name {
+      color: var(--color-text-secondary);
+    }
+  }
+}
