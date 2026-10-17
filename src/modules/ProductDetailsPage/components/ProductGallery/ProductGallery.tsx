@@ -14,13 +14,14 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
   return (
     <div className={styles.productGallery}>
       <img
+        key={selectedImage}
         src={selectedImage}
         alt={name}
         className={styles.productGalleryMainFoto}
       />
       <ul className={styles.productGalleryList}>
         {images.map((image, index) => (
-          <li key={index} className={styles.productGalleryItem}>
+          <li key={image}>
             <button
               type="button"
               className={classNames(styles.productGalleryButton, {

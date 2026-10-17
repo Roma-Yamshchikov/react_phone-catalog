@@ -38,6 +38,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
                   })
                 }
                 style={{ backgroundColor: COLORS[color] }}
+                state={{ keepScroll: true }}
               />
             </li>
           );
@@ -63,6 +64,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
                       [styles.productOptionsCapacityActive]: isActive,
                     })
                   }
+                  state={{ keepScroll: true }}
                 >
                   {capacity}
                 </NavLink>

@@ -48,12 +48,16 @@ export const ProductDetailsPage = () => {
       </button>
 
       <h1 className={styles.productDetailsTitle}>{productDetails.name}</h1>
-      <ProductGallery
-        images={productDetails.images}
-        name={productDetails.name}
-      />
 
-      <ProductOptions product={productDetails} />
+      <div className={styles.productDetailsTop}>
+        <ProductGallery
+          images={productDetails.images}
+          name={productDetails.name}
+          key={productDetails.id}
+        />
+
+        <ProductOptions product={productDetails} />
+      </div>
     </div>
   );
 };

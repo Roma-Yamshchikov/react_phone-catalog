@@ -29,9 +29,24 @@
     border-radius: 50%;
     border: 2px solid var(--color-bg);
     box-shadow: 0 0 0 1px var(--color-border);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
 
     &Active {
       box-shadow: 0 0 0 1px var(--color-text);
+    }
+
+    &:focus-visible {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 1px var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 1px var(--color-accent);
+      }
     }
   }
 
@@ -60,12 +75,25 @@
     color: var(--color-text);
     border: 1px solid var(--color-border);
     padding: 7px 8px 4px;
-  }
+    transition: border-color 0.3s, color 0.3s;
 
-  &CapacityActive {
-    background-color: var(--color-text);
-    color: var(--color-bg);
-    border-color: var(--color-text);
+    &Active {
+      background-color: var(--color-text);
+      color: var(--color-bg);
+      border-color: var(--color-text);
+    }
+
+    &:focus-visible {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+    }
   }
 
   &Prices {
