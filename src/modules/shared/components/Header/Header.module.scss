@@ -55,7 +55,12 @@
     }
   }
 
-  &:hover .logoImage,
+  @media (hover: hover) {
+    &:hover .logoImage {
+      transform: scale(1.2);
+    }
+  }
+
   &:focus-visible .logoImage {
     transform: scale(1.2);
   }

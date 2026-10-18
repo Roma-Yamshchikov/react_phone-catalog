@@ -1,6 +1,6 @@
 import { Category } from './Product';
 
-type DescriptionBlock = {
+export type DescriptionBlock = {
   title: string;
   text: string[];
 };

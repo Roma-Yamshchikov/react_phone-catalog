@@ -60,6 +60,7 @@
   &Top {
     display: grid;
     gap: 40px;
+    margin-bottom: 56px;
 
     @include on-tablet {
       grid-template-columns: 7fr 5fr;
@@ -68,6 +69,16 @@
 
     @include on-desktop {
       grid-template-columns: 560px 320px;
+      gap: 64px;
+    }
+  }
+
+  &Bottom {
+    display: grid;
+    gap: 56px;
+
+    @include on-desktop {
+      grid-template-columns: 560px 512px;
       gap: 64px;
     }
   }
