@@ -2,18 +2,25 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
-import { getProductDetails } from '../../api/products';
+import { getProductDetails, getSuggestedProducts } from '../../api/products';
 import { NavPath } from '../shared/components/NavPath';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductOptions } from './components/ProductOptions';
 import { ProductAbout } from './components/ProductAbout';
 import { ProductTechSpecs } from './components/ProductTechSpecs';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
+import { Product } from '../../types/Product';
 
 export const ProductDetailsPage = () => {
   const { category, itemId } = useParams();
   const navigate = useNavigate();
 
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails] = useState<ProductDetails>();
+
+  useEffect(() => {
+    getSuggestedProducts().then(setSuggestedProducts);
+  }, []);
 
   useEffect(() => {
     if (!category || !itemId) {
@@ -66,6 +73,8 @@ export const ProductDetailsPage = () => {
 
         <ProductTechSpecs product={productDetails} />
       </div>
+
+      <ProductsSlider title="You may also like" products={suggestedProducts} />
     </div>
   );
 };

@@ -79,6 +79,7 @@
     display: flex;
     height: 40px;
     gap: 8px;
+    margin-top: auto
   }
 
   &AddButton {
@@ -133,13 +134,13 @@
   @media (hover: hover) {
     &:hover {
       box-shadow:
-        0 0 0 1px var(--color-accent),
+        inset 0 0 0 1px var(--color-accent),
         0 8px 24px rgba(144, 91, 255, 0.25);
       transform: translateY(-5px);
     }
 
     &:hover .productCardImage {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 }

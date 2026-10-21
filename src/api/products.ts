@@ -15,3 +15,12 @@ export const getProductDetails = (
       data.find(product => itemId === product.id),
     );
 };
+
+export const getSuggestedProducts = (): Promise<Product[]> => {
+  return getProducts().then(data => {
+    return data
+      .slice()
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
+  });
+};

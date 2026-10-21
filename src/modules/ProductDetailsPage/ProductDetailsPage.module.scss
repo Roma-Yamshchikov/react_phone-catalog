@@ -1,7 +1,7 @@
 @import '../../styles/mixins';
 
 .productDetails {
-  padding-top: 24px;
+  padding: 24px 0 36px;
 
   &Back {
     @include small-text;
@@ -76,6 +76,7 @@
   &Bottom {
     display: grid;
     gap: 56px;
+    margin-bottom: 56px;
 
     @include on-desktop {
       grid-template-columns: 560px 512px;
