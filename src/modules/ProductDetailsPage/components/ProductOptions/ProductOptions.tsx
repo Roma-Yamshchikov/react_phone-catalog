@@ -30,7 +30,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
           return (
             <li key={color}>
               <NavLink
-                to={`/${product.category}/${adressID}`}
+                to={`/product/${adressID}`}
                 aria-label={color}
                 className={({ isActive }) =>
                   classNames(styles.productOptionsColor, {
@@ -58,7 +58,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
             return (
               <li key={capacity}>
                 <NavLink
-                  to={`/${product.category}/${adressCapacity}`}
+                  to={`/product/${adressCapacity}`}
                   className={({ isActive }) =>
                     classNames(styles.productOptionsCapacity, {
                       [styles.productOptionsCapacityActive]: isActive,

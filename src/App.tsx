@@ -32,7 +32,7 @@ export const App = () => (
           <Route path="/favorites" element={<h1>Favorites</h1>} />
           <Route path="/cart" element={<h1>Cart</h1>} />
 
-          <Route path="/:category/:itemId" element={<ProductDetailsPage />} />
+          <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
           <Route path="*" element={<h1>Error</h1>} />
         </Routes>

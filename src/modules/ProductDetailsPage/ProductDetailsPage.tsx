@@ -12,7 +12,7 @@ import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { Product } from '../../types/Product';
 
 export const ProductDetailsPage = () => {
-  const { category, itemId } = useParams();
+  const { productId } = useParams();
   const navigate = useNavigate();
 
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
@@ -23,20 +23,19 @@ export const ProductDetailsPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!category || !itemId) {
+    if (!productId) {
       return;
     }
 
-    getProductDetails(category, itemId).then(setProductDetails);
-  }, [category, itemId]);
-
-  const categoryLabel = category
-    ? category[0].toUpperCase() + category.slice(1)
-    : '';
+    getProductDetails(productId).then(setProductDetails);
+  }, [productId]);
 
   if (!productDetails) {
     return <p>Loading...</p>;
   }
+
+  const category = productDetails.category;
+  const categoryLabel = category[0].toUpperCase() + category.slice(1);
 
   return (
     <div className={styles.productDetails}>

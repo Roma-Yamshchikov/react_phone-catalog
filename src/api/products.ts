@@ -6,14 +6,21 @@ export const getProducts = (): Promise<Product[]> => {
 };
 
 export const getProductDetails = (
-  category: string,
-  itemId: string,
+  productId: string,
 ): Promise<ProductDetails | undefined> => {
-  return fetch(`api/${category}.json`)
-    .then(response => response.json())
-    .then((data: ProductDetails[]) =>
-      data.find(product => itemId === product.id),
-    );
+  return getProducts().then(products => {
+    const product = products.find(prod => prod.itemId === productId);
+
+    if (!product) {
+      return undefined;
+    }
+
+    return fetch(`api/${product.category}.json`)
+      .then(response => response.json())
+      .then((data: ProductDetails[]) => {
+        return data.find(item => item.id === productId);
+      });
+  });
 };
 
 export const getSuggestedProducts = (): Promise<Product[]> => {

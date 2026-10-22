@@ -58,7 +58,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={isStart}
           >
             <img
-              src="/img-logo-icons/icons/arrow-left.svg"
+              src="img-logo-icons/icons/arrow-left.svg"
               alt=""
               className={styles.productsSliderIcon}
             />
@@ -72,7 +72,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={isEnd}
           >
             <img
-              src="/img-logo-icons/icons/arrow-right.svg"
+              src="img-logo-icons/icons/arrow-right.svg"
               alt=""
               className={styles.productsSliderIcon}
             />
