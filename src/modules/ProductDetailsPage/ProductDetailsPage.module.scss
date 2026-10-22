@@ -3,6 +3,27 @@
 .productDetails {
   padding: 24px 0 36px;
 
+  &NotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  &NotFoundImage {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+
+  &NotFoundTitle {
+    @include h2;
+
+    margin: 0;
+    text-align: center;
+  }
+
   &Back {
     @include small-text;
 

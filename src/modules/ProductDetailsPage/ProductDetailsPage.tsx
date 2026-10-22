@@ -10,6 +10,7 @@ import { ProductAbout } from './components/ProductAbout';
 import { ProductTechSpecs } from './components/ProductTechSpecs';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { Product } from '../../types/Product';
+import { Loader } from '../shared/components/Loader';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -17,6 +18,7 @@ export const ProductDetailsPage = () => {
 
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails] = useState<ProductDetails>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getSuggestedProducts().then(setSuggestedProducts);
@@ -27,11 +29,31 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    getProductDetails(productId).then(setProductDetails);
+    setIsLoading(true);
+
+    getProductDetails(productId)
+      .then(setProductDetails)
+      .finally(() => setIsLoading(false));
   }, [productId]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (!productDetails) {
-    return <p>Loading...</p>;
+    return (
+      <div className={styles.productDetailsNotFound}>
+        <img
+          src="img/product-not-found.png"
+          alt=""
+          className={styles.productDetailsNotFoundImage}
+        />
+
+        <h1 className={styles.productDetailsNotFoundTitle}>
+          Product was not found
+        </h1>
+      </div>
+    );
   }
 
   const category = productDetails.category;
