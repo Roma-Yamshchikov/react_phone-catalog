@@ -5,6 +5,7 @@ import { Footer } from './modules/shared/components/Footer';
 import { CatalogPage } from './modules/CatalogPage';
 import { ScrollToTop } from './modules/shared/components/ScrollToTop';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { BackToTop } from './modules/shared/components/BackToTop';
 
 export const App = () => (
   <div className="App">
@@ -40,5 +41,7 @@ export const App = () => (
     </main>
 
     <Footer />
+
+    <BackToTop />
   </div>
 );

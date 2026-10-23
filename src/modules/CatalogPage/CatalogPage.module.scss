@@ -48,7 +48,7 @@
   }
 
   &Select {
-    width: 176px;
+    width: 136px;
     height: 40px;
     padding: 0 12px;
     font-family: inherit;
@@ -62,6 +62,10 @@
     background-repeat: no-repeat;
     background-position: right 12px center;
     transition: border-color 0.3s;
+
+    @include on-tablet {
+      width: 176px;
+    }
 
     &:focus-visible {
       border-color: var(--color-text);
