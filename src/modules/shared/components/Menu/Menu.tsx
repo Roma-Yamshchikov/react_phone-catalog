@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
+import { CartContext } from '../../../../store/CartContext';
 
 type Props = {
   isOpen: boolean;
@@ -15,6 +16,19 @@ const getBottomLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.bottomLink, { [styles.bottomLinkActive]: isActive });
 
 export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
+  const { cartItems } = useContext(CartContext);
+
+  const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Prevent page scrolling behind the open menu
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <div className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
       <div className={styles.top}>
@@ -85,6 +99,9 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
             alt="Cart"
             className={styles.bottomIcon}
           />
+          {totalCount > 0 && (
+            <span className={styles.bottomCounter}>{totalCount}</span>
+          )}
         </NavLink>
       </div>
     </div>

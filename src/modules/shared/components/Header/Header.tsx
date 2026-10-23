@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
 import { Menu } from '../Menu';
+import { CartContext } from '../../../../store/CartContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -10,6 +11,9 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { cartItems } = useContext(CartContext);
+  const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -62,6 +66,9 @@ export const Header = () => {
             src="img-logo-icons/icons/icon-shopping-Cart.svg"
             alt="Cart"
           />
+          {totalCount > 0 && (
+            <span className={styles.actionCounter}>{totalCount}</span>
+          )}
         </Link>
       </div>
 
