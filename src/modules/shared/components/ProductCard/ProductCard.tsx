@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../../types/Product';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../../../store/CartContext';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { cartItems, addToCart } = useContext(CartContext);
+
+  const isInCart = cartItems.some(item => item.id === product.id);
+
   const productLink = `/product/${product.itemId}`;
 
   return (
@@ -48,8 +54,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </ul>
 
       <div className={styles.productCardActions}>
-        <button className={styles.productCardAddButton} type="button">
-          Add to cart
+        <button
+          className={classNames(styles.productCardAddButton, {
+            [styles.productCardAddButtonActive]: isInCart,
+          })}
+          type="button"
+          onClick={() => addToCart(product)}
+        >
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button className={styles.productCardFavoriteButton} type="button">
           <img
