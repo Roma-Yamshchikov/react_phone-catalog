@@ -24,4 +24,54 @@
     gap: 16px;
     margin-top: 24px;
   }
+
+  &Filters {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &Field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &Label {
+    @include small-text;
+
+    color: var(--color-text-secondary);
+  }
+
+  &Select {
+    width: 176px;
+    height: 40px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23F1F2F9' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.3s;
+
+    &:focus-visible {
+      border-color: var(--color-text);
+      outline: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-text);
+      }
+    }
+  }
 }

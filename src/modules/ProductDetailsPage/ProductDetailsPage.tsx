@@ -36,7 +36,7 @@ export const ProductDetailsPage = () => {
       .finally(() => setIsLoading(false));
   }, [productId]);
 
-  if (isLoading) {
+  if (isLoading && !productDetails) {
     return <Loader />;
   }
 
