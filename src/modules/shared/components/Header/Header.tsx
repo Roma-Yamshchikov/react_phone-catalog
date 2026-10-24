@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import styles from './Header.module.scss';
 import { Menu } from '../Menu';
 import { CartContext } from '../../../../store/CartContext';
+import { FavoritesContext } from '../../../../store/FavoritesContext';
+import { Counter } from '../Counter';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -13,6 +15,8 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { cartItems } = useContext(CartContext);
+  const { favorites } = useContext(FavoritesContext);
+
   const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -59,6 +63,7 @@ export const Header = () => {
             src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
             alt="Favorites"
           />
+          <Counter value={favorites.length} />
         </Link>
         <Link to="/cart" className={styles.actionLink}>
           <img
@@ -66,9 +71,7 @@ export const Header = () => {
             src="img-logo-icons/icons/icon-shopping-Cart.svg"
             alt="Cart"
           />
-          {totalCount > 0 && (
-            <span className={styles.actionCounter}>{totalCount}</span>
-          )}
+          <Counter value={totalCount} />
         </Link>
       </div>
 

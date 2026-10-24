@@ -3,6 +3,8 @@ import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
 import { CartContext } from '../../../../store/CartContext';
+import { FavoritesContext } from '../../../../store/FavoritesContext';
+import { Counter } from '../Counter';
 
 type Props = {
   isOpen: boolean;
@@ -17,6 +19,7 @@ const getBottomLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   const { cartItems } = useContext(CartContext);
+  const { favorites } = useContext(FavoritesContext);
 
   const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -92,6 +95,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
             alt="Favorites"
             className={styles.bottomIcon}
           />
+          <Counter value={favorites.length} />
         </NavLink>
         <NavLink to="/cart" className={getBottomLinkClass} onClick={onClose}>
           <img
@@ -99,9 +103,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
             alt="Cart"
             className={styles.bottomIcon}
           />
-          {totalCount > 0 && (
-            <span className={styles.bottomCounter}>{totalCount}</span>
-          )}
+          <Counter value={totalCount} />
         </NavLink>
       </div>
     </div>

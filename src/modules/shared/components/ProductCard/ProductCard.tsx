@@ -4,6 +4,7 @@ import { Product } from '../../../../types/Product';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../../store/CartContext';
 import classNames from 'classnames';
+import { FavoritesContext } from '../../../../store/FavoritesContext';
 
 type Props = {
   product: Product;
@@ -11,8 +12,10 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { cartItems, addToCart } = useContext(CartContext);
+  const { toggleFavorite, favorites } = useContext(FavoritesContext);
 
   const isInCart = cartItems.some(item => item.id === product.id);
+  const isFavorite = favorites.some(item => item.id === product.id);
 
   const productLink = `/product/${product.itemId}`;
 
@@ -63,10 +66,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
-        <button className={styles.productCardFavoriteButton} type="button">
+        <button
+          className={classNames(styles.productCardFavoriteButton, {
+            [styles.productCardFavoriteButtonActive]: isFavorite,
+          })}
+          type="button"
+          onClick={() => toggleFavorite(product)}
+        >
           <img
-            src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
-            alt="Add to favorites"
+            src={
+              isFavorite
+                ? 'img-logo-icons/icons/favourites-heart-like-red.svg'
+                : 'img-logo-icons/icons/icon-favourites-Heart-like.svg'
+            }
+            alt={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
             className={styles.productCardFavoriteButtonImage}
           />
         </button>
