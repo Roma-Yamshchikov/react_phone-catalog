@@ -1,13 +1,18 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
+type ProductWithDetails = {
+  product: Product;
+  details: ProductDetails;
+};
+
 export const getProducts = (): Promise<Product[]> => {
   return fetch('api/products.json').then(response => response.json());
 };
 
 export const getProductDetails = (
   productId: string,
-): Promise<ProductDetails | undefined> => {
+): Promise<ProductWithDetails | undefined> => {
   return getProducts().then(products => {
     const product = products.find(prod => prod.itemId === productId);
 
@@ -18,7 +23,9 @@ export const getProductDetails = (
     return fetch(`api/${product.category}.json`)
       .then(response => response.json())
       .then((data: ProductDetails[]) => {
-        return data.find(item => item.id === productId);
+        const details = data.find(item => item.id === productId);
+
+        return details ? { product, details } : undefined;
       });
   });
 };

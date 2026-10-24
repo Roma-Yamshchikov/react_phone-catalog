@@ -18,6 +18,7 @@ export const ProductDetailsPage = () => {
 
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails] = useState<ProductDetails>();
+  const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,7 +33,10 @@ export const ProductDetailsPage = () => {
     setIsLoading(true);
 
     getProductDetails(productId)
-      .then(setProductDetails)
+      .then(data => {
+        setProductDetails(data?.details);
+        setProduct(data?.product);
+      })
       .finally(() => setIsLoading(false));
   }, [productId]);
 
@@ -40,7 +44,7 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
-  if (!productDetails) {
+  if (!productDetails || !product) {
     return (
       <div className={styles.productDetailsNotFound}>
         <img
@@ -86,7 +90,7 @@ export const ProductDetailsPage = () => {
           key={productDetails.id}
         />
 
-        <ProductOptions product={productDetails} />
+        <ProductOptions productDetails={productDetails} product={product} />
       </div>
 
       <div className={styles.productDetailsBottom}>

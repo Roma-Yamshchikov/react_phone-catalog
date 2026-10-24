@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ProductOptions.module.scss';
 import { ProductDetails } from '../../../../types/ProductDetails';
 import { NavLink } from 'react-router-dom';
 import { COLORS } from '../../../../constants/colors';
 import classNames from 'classnames';
+import { Product } from '../../../../types/Product';
+import { CartContext } from '../../../../store/CartContext';
+import { FavoritesContext } from '../../../../store/FavoritesContext';
 
 type Props = {
-  product: ProductDetails;
+  productDetails: ProductDetails;
+  product: Product;
 };
 
 // Product code is not in the API data, so a placeholder from the design is used
 const PRODUCT_CODE = '802390';
 
-export const ProductOptions: React.FC<Props> = ({ product }) => {
+export const ProductOptions: React.FC<Props> = ({
+  productDetails,
+  product,
+}) => {
+  const { cartItems, addToCart } = useContext(CartContext);
+  const { favorites, toggleFavorite } = useContext(FavoritesContext);
+
+  const isInCart = cartItems.some(item => item.id === product.id);
+  const isFavorite = favorites.some(item => item.id === product.id);
+
   return (
     <div className={styles.productOptions}>
       <div className={styles.productOptionsHeader}>
@@ -21,11 +34,12 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
       </div>
 
       <ul className={styles.productOptionsColors}>
-        {product.colorsAvailable.map(color => {
-          const adressID = `${product.namespaceId}-${product.capacity}-${color}`
-            .toLowerCase()
-            .split(' ')
-            .join('-');
+        {productDetails.colorsAvailable.map(color => {
+          const adressID =
+            `${productDetails.namespaceId}-${productDetails.capacity}-${color}`
+              .toLowerCase()
+              .split(' ')
+              .join('-');
 
           return (
             <li key={color}>
@@ -48,9 +62,9 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
       <div className={styles.productOptionsSection}>
         <p className={styles.productOptionsLabel}>Select capacity</p>
         <ul className={styles.productOptionsCapacities}>
-          {product.capacityAvailable.map(capacity => {
+          {productDetails.capacityAvailable.map(capacity => {
             const adressCapacity =
-              `${product.namespaceId}-${capacity}-${product.color}`
+              `${productDetails.namespaceId}-${capacity}-${productDetails.color}`
                 .toLowerCase()
                 .split(' ')
                 .join('-');
@@ -76,18 +90,36 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
 
       <div>
         <div className={styles.productOptionsPrices}>
-          <p className={styles.productOptionsPrice}>${product.priceDiscount}</p>
+          <p className={styles.productOptionsPrice}>
+            ${productDetails.priceDiscount}
+          </p>
           <s className={styles.productOptionsFullPrice}>
-            ${product.priceRegular}
+            ${productDetails.priceRegular}
           </s>
         </div>
         <div className={styles.productOptionsActions}>
-          <button type="button" className={styles.productOptionsAddButton}>
-            Add to cart
+          <button
+            type="button"
+            className={classNames(styles.productOptionsAddButton, {
+              [styles.productOptionsAddButtonActive]: isInCart,
+            })}
+            onClick={() => addToCart(product)}
+          >
+            {isInCart ? 'Added to cart' : 'Add to cart'}
           </button>
-          <button type="button" className={styles.productOptionsFavoriteButton}>
+          <button
+            type="button"
+            className={classNames(styles.productOptionsFavoriteButton, {
+              [styles.productOptionsFavoriteButtonActive]: isFavorite,
+            })}
+            onClick={() => toggleFavorite(product)}
+          >
             <img
-              src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
+              src={
+                isFavorite
+                  ? 'img-logo-icons/icons/favourites-heart-like-red.svg'
+                  : 'img-logo-icons/icons/icon-favourites-Heart-like.svg'
+              }
               alt="Add to favorites"
               className={styles.productOptionsFavoriteButtonImage}
             />
@@ -96,19 +128,19 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
         <ul className={styles.productOptionsSpecs}>
           <li className={styles.productOptionsSpec}>
             <span className={styles.productOptionsSpecName}>Screen</span>
-            <span>{product.screen}</span>
+            <span>{productDetails.screen}</span>
           </li>
           <li className={styles.productOptionsSpec}>
             <span className={styles.productOptionsSpecName}>Resolution</span>
-            <span>{product.resolution}</span>
+            <span>{productDetails.resolution}</span>
           </li>
           <li className={styles.productOptionsSpec}>
             <span className={styles.productOptionsSpecName}>Processor</span>
-            <span>{product.processor}</span>
+            <span>{productDetails.processor}</span>
           </li>
           <li className={styles.productOptionsSpec}>
             <span className={styles.productOptionsSpecName}>RAM</span>
-            <span>{product.ram}</span>
+            <span>{productDetails.ram}</span>
           </li>
         </ul>
       </div>
