@@ -135,8 +135,15 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
 
       {!isLoading && hasError && (
         <div className={styles.catalogPageMessage}>
-          <p>Something went wrong</p>
-          <button type="button" onClick={loadProducts}>
+          <h2 className={styles.catalogPageMessageTitle}>
+            Something went wrong
+          </h2>
+
+          <button
+            type="button"
+            className={styles.catalogPageMessageButton}
+            onClick={loadProducts}
+          >
             Reload
           </button>
         </div>

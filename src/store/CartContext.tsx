@@ -1,6 +1,7 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import { CartItem } from '../types/CartItem';
 import { Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type CartContextType = {
   cartItems: CartItem[];
@@ -23,7 +24,7 @@ type Props = {
 };
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
 
   const addToCart = (product: Product) => {
     const isInCart = cartItems.some(item => item.id === product.id);

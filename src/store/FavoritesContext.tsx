@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import { Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type FavoritesContextType = {
   favorites: Product[];
@@ -16,7 +17,7 @@ type Props = {
 };
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
 
   const toggleFavorite = (product: Product) => {
     const isFavorite = favorites.some(item => item.id === product.id);

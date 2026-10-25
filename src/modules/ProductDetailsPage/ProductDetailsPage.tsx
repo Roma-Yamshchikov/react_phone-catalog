@@ -20,6 +20,7 @@ export const ProductDetailsPage = () => {
   const [productDetails, setProductDetails] = useState<ProductDetails>();
   const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     getSuggestedProducts().then(setSuggestedProducts);
@@ -31,17 +32,41 @@ export const ProductDetailsPage = () => {
     }
 
     setIsLoading(true);
+    setHasError(false);
 
     getProductDetails(productId)
       .then(data => {
         setProductDetails(data?.details);
         setProduct(data?.product);
       })
+      .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
   }, [productId]);
 
   if (isLoading && !productDetails) {
     return <Loader />;
+  }
+
+  if (hasError) {
+    return (
+      <div className={styles.productDetailsError}>
+        <h1 className={styles.productDetailsErrorTitle}>
+          Something went wrong
+        </h1>
+
+        <p className={styles.productDetailsErrorText}>
+          We couldn&apos;t load this product. Please try again.
+        </p>
+
+        <button
+          type="button"
+          className={styles.productDetailsErrorButton}
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
+      </div>
+    );
   }
 
   if (!productDetails || !product) {

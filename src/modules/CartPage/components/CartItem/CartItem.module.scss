@@ -1,0 +1,159 @@
+@import '../../../../styles/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-bg-card);
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &Top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &Close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &CloseIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &Photo {
+    display: flex;
+    flex: none;
+    width: 66px;
+    height: 66px;
+
+    @include on-tablet {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &Image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &Title {
+    @include small-text;
+
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:focus-visible {
+      color: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &Bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &Quantity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 16px;
+    color: var(--color-text);
+    background: none;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      color 0.3s;
+
+    &:focus-visible {
+      border-color: var(--color-text);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-text);
+      }
+    }
+
+    &:disabled {
+      color: var(--color-text-secondary);
+      border-color: var(--color-border);
+      cursor: default;
+    }
+  }
+
+  &Count {
+    min-width: 16px;
+    text-align: center;
+  }
+
+  &Price {
+    @include h3;
+
+    margin: 0;
+
+    @include on-tablet {
+      min-width: 80px;
+      text-align: right;
+    }
+  }
+}
