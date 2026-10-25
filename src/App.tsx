@@ -8,6 +8,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { BackToTop } from './modules/shared/components/BackToTop';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => (
   <div className="App">
@@ -37,7 +38,7 @@ export const App = () => (
 
           <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
-          <Route path="*" element={<h1>Error</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </main>

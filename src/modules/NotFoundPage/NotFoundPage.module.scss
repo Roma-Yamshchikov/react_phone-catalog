@@ -1,0 +1,51 @@
+@import '../../styles/mixins';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 60vh;
+  padding: 24px 0 56px;
+  text-align: center;
+
+  &Image {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 40vh;
+  }
+
+  &Title {
+    @include h1;
+
+    margin: 0;
+  }
+
+  &Button {
+    @include buttons;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    height: 48px;
+    margin-top: 8px;
+    padding: 0 24px;
+    color: var(--color-text);
+    background-color: var(--color-accent);
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+      }
+    }
+  }
+}
