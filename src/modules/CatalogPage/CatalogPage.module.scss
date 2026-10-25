@@ -18,13 +18,6 @@
     color: var(--color-text-secondary);
   }
 
-  &List {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
-    gap: 16px;
-    margin-top: 24px;
-  }
-
   &Filters {
     display: flex;
     gap: 16px;

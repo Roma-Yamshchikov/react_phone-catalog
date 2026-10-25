@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import styles from './CatalogPage.module.scss';
 import { Category, Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
-import { ProductCard } from '../shared/components/ProductCard';
 import { NavPath } from '../shared/components/NavPath';
 import { Loader } from '../shared/components/Loader';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../shared/components/Pagination';
+import { ProductList } from '../shared/components/ProductList';
 
 type Props = {
   category: Category;
@@ -154,11 +154,7 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
       )}
 
       {!isLoading && !hasError && products.length > 0 && (
-        <div className={styles.catalogPageList}>
-          {pageProducts.map(product => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
-        </div>
+        <ProductList products={pageProducts} />
       )}
 
       {!isLoading && !hasError && totalPages > 1 && (
