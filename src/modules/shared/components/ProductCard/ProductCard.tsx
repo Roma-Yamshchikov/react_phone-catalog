@@ -8,9 +8,10 @@ import { FavoritesContext } from '../../../../store/FavoritesContext';
 
 type Props = {
   product: Product;
+  hideDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, hideDiscount }) => {
   const { cartItems, addToCart } = useContext(CartContext);
   const { toggleFavorite, favorites } = useContext(FavoritesContext);
 
@@ -36,7 +37,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </h3>
       <div className={styles.productCardPrices}>
         <p className={styles.productCardPrice}>${product.price}</p>
-        <s className={styles.productCardFullPrice}>${product.fullPrice}</s>
+
+        {!hideDiscount && (
+          <s className={styles.productCardFullPrice}>${product.fullPrice}</s>
+        )}
       </div>
 
       <ul className={styles.productCardSpecs}>

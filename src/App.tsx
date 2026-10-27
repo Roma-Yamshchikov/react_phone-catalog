@@ -9,6 +9,7 @@ import { BackToTop } from './modules/shared/components/BackToTop';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { HomePage } from './modules/HomePage';
 
 export const App = () => (
   <div className="App">
@@ -18,7 +19,7 @@ export const App = () => (
     <main className="main">
       <div className="container">
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/phones"
             element={<CatalogPage category={'phones'} title="Mobile phones" />}

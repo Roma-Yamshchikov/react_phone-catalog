@@ -1,0 +1,78 @@
+@import '../../../../styles/mixins';
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 56px;
+
+  &Head {
+    @include h2;
+
+    margin: 0;
+  }
+}
+
+.shopByCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &Link {
+    text-decoration: none;
+  }
+
+  &Title {
+    @include h3;
+
+    display: block;
+    margin-top: 24px;
+    color: var(--color-text);
+  }
+
+  &Count {
+    display: block;
+    margin-top: 8px;
+    color: var(--color-text-secondary);
+  }
+
+  &Photo {
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    transition: box-shadow 0.3s;
+  }
+
+  &Image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  &Link:focus-visible &Image {
+    transform: scale(1.1);
+  }
+
+  @media (hover: hover) {
+    &Link:hover &Photo {
+      box-shadow:
+        0 0 0 1px var(--color-accent),
+        0 8px 32px rgb(144 91 255 / 30%);
+    }
+  }
+
+  @media (hover: hover) {
+    &Link:hover &Image {
+      transform: scale(1.1);
+    }
+  }
+}

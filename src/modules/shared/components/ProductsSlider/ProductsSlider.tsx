@@ -6,11 +6,16 @@ import { ProductCard } from '../ProductCard';
 type Props = {
   title: string;
   products: Product[];
+  hideDiscount?: boolean;
 };
 
 const GAP = 16;
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  hideDiscount,
+}) => {
   const trackRef = useRef<HTMLUListElement>(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
@@ -86,7 +91,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       >
         {products.map(product => (
           <li key={product.id} className={styles.productsSliderItem}>
-            <ProductCard product={product} />
+            <ProductCard product={product} hideDiscount={hideDiscount} />
           </li>
         ))}
       </ul>
