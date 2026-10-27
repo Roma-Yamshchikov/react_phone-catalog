@@ -14,9 +14,9 @@
   }
 
   &ErrorTitle {
-    @include h2;
-
     margin: 0;
+
+    @include h2;
   }
 
   &ErrorText {
@@ -25,8 +25,6 @@
   }
 
   &ErrorButton {
-    @include buttons;
-
     min-width: 180px;
     height: 48px;
     padding: 0 24px;
@@ -36,6 +34,8 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);
@@ -63,15 +63,13 @@
   }
 
   &NotFoundTitle {
-    @include h2;
-
     margin: 0;
     text-align: center;
+
+    @include h2;
   }
 
   &Back {
-    @include small-text;
-
     display: flex;
     align-items: center;
     gap: 4px;
@@ -83,6 +81,8 @@
     font-family: inherit;
     cursor: pointer;
     transition: color 0.3s;
+
+    @include small-text;
 
     @include on-tablet {
       margin-top: 40px;
@@ -114,9 +114,9 @@
   }
 
   &Title {
-    @include h2;
-
     margin: 16px 0 32px;
+
+    @include h2;
 
     @include on-tablet {
       margin-bottom: 40px;

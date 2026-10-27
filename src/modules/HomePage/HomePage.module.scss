@@ -2,9 +2,9 @@
 
 .homePage{
   &Title {
-    @include h1;
-
     margin: 24px 0;
+
+    @include h1;
 
     @include on-tablet {
       margin: 36px 0;

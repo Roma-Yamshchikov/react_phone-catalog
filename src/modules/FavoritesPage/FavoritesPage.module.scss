@@ -23,9 +23,9 @@
   }
 
   &Title {
-    @include h1;
-
     margin: 0;
+
+    @include h1;
   }
 
   &Count {
@@ -59,22 +59,20 @@
   }
 
   &EmptyTitle {
-    @include h2;
-
     margin: 0;
+
+    @include h2;
   }
 
   &EmptyText {
-    @include small-text;
-
     max-width: 320px;
     margin: 0;
     color: var(--color-text-secondary);
+
+    @include small-text;
   }
 
   &EmptyButton {
-    @include buttons;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +84,8 @@
     background-color: var(--color-accent);
     text-decoration: none;
     transition: background-color 0.3s;
+
+    @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);

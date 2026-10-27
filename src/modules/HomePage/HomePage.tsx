@@ -42,7 +42,7 @@ export const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
-      <h1 className={styles.homePageTitle}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.homePageTitle}>Product Catalog</h1>
       <PicturesSlider />
 
       {isLoading && <Loader />}

@@ -39,9 +39,9 @@
   }
 
   &Price {
-    @include h3;
-
     margin: 0;
+
+    @include h3;
   }
 
   &FullPrice {
@@ -65,10 +65,10 @@
   }
 
   &Spec {
-    @include small-text;
-
     display: flex;
     justify-content: space-between;
+
+    @include small-text;
   }
 
   &SpecName {
@@ -83,8 +83,6 @@
   }
 
   &AddButton {
-    @include buttons;
-
     flex-grow: 1;
     background-color: var(--color-accent);
     border: none;
@@ -92,6 +90,8 @@
     color: var(--color-text);
     font-family: inherit;
     transition: background-color 0.3s;
+    
+    @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);

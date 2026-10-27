@@ -4,9 +4,9 @@
   padding-top: 24px;
 
   &Title {
-    @include h1;
-
     margin: 24px 0 0;
+
+    @include h1;
 
     @include on-tablet {
       margin-top: 40px;
@@ -35,9 +35,9 @@
   }
 
   &Label {
-    @include small-text;
-
     color: var(--color-text-secondary);
+
+    @include small-text;
   }
 
   &Select {
@@ -83,14 +83,12 @@
   }
 
   &MessageTitle {
-    @include h2;
-
     margin: 0;
+
+    @include h2;
   }
 
   &MessageButton {
-    @include buttons;
-
     min-width: 180px;
     height: 48px;
     padding: 0 24px;
@@ -100,6 +98,8 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);

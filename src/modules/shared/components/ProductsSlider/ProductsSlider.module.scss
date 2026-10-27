@@ -2,9 +2,9 @@
 
 .productsSlider {
   &Title {
-    @include h2;
-
     margin: 0;
+
+    @include h2;
   }
 
   &Header {

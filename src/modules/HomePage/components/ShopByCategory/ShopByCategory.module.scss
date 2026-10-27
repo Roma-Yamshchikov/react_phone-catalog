@@ -7,9 +7,9 @@
   margin-bottom: 56px;
 
   &Head {
-    @include h2;
-
     margin: 0;
+
+    @include h2;
   }
 }
 
@@ -32,11 +32,11 @@
   }
 
   &Title {
-    @include h3;
-
     display: block;
     margin-top: 24px;
     color: var(--color-text);
+    
+    @include h3;
   }
 
   &Count {

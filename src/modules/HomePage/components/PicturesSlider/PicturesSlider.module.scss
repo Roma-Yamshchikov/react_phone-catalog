@@ -73,4 +73,18 @@
     gap: 14px;
     flex-basis: 100%;
   }
+
+  &Dash {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: var(--color-border);
+    transition: background-color 0.3s;
+  }
+
+  &DashActive {
+    background-color: var(--color-text);
+  }
 }

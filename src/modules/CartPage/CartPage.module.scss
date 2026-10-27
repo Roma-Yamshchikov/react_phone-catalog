@@ -17,15 +17,13 @@
   }
 
   &EmptyTitle {
-    @include h2;
-
     margin: 0;
     text-align: center;
+
+    @include h2;
   }
 
   &Back {
-    @include small-text;
-
     display: flex;
     align-items: center;
     gap: 4px;
@@ -36,6 +34,8 @@
     font-family: inherit;
     cursor: pointer;
     transition: color 0.3s;
+
+    @include small-text;
 
     @include on-tablet {
       margin-top: 40px;
@@ -67,9 +67,9 @@
   }
 
   &Title {
-    @include h1;
-
     margin: 24px 0 32px;
+
+    @include h1;
   }
 
   &Content {
@@ -111,9 +111,9 @@
     }
 
     &Price {
-      @include h2;
-
       margin: 0;
+
+      @include h2;
     }
 
     &Count {
@@ -129,8 +129,6 @@
   }
 
   &Checkout {
-    @include buttons;
-
     width: 100%;
     height: 48px;
     background-color: var(--color-accent);
@@ -140,6 +138,8 @@
     font-family: inherit;
     transition: background-color 0.3s;
 
+    @include buttons;
+    
     &:focus-visible {
       background-color: var(--color-accent-hover);
     }

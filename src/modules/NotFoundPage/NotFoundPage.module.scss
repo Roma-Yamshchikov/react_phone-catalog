@@ -18,14 +18,12 @@
   }
 
   &Title {
-    @include h1;
-
     margin: 0;
+
+    @include h1;
   }
 
   &Button {
-    @include buttons;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,6 +35,8 @@
     background-color: var(--color-accent);
     text-decoration: none;
     transition: background-color 0.3s;
+    
+    @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);
