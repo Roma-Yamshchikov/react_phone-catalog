@@ -27,8 +27,8 @@
     font-family: inherit;
     font-size: 14px;
     color: var(--color-text);
-    background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-button-border);
     cursor: pointer;
     transition:
       background-color 0.3s,
@@ -53,11 +53,10 @@
     &:disabled {
       color: var(--color-text-secondary);
       cursor: default;
-      opacity: 0.5;
     }
 
     &Active {
-      color: var(--color-bg);
+      color: var(--color-text-on-accent);
       background-color: var(--color-accent);
       border-color: var(--color-accent);
 

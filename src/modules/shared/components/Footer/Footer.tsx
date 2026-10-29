@@ -8,9 +8,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={classNames('container', styles.containerFooter)}>
-        <Link to="/" className={styles.logo}>
-          <img src="img-logo-icons/logo.svg" alt="Nice Gadgets" />
-        </Link>
+        <Link to="/" className={styles.logo} aria-label="Nice Gadgets"></Link>
 
         <nav className={styles.nav}>
           <ul className={styles.navList}>
@@ -54,7 +52,7 @@ export const Footer = () => {
         >
           <span className={styles.backToTopText}>Back to top</span>
           <span className={styles.backToTopButton}>
-            <img src="img-logo-icons/icons/arrow-up.svg" alt="" />
+            <span className={styles.backToTopIcon} aria-hidden="true" />
           </span>
         </button>
       </div>

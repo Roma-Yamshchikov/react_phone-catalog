@@ -14,22 +14,14 @@ type Props = {
 export const NavPath: React.FC<Props> = ({ items }) => {
   return (
     <nav className={styles.navPath}>
-      <Link to="/" className={styles.navPathHome}>
-        <img
-          src="img-logo-icons/icons/icon-home.svg"
-          alt="Home"
-          className={styles.navPathHomeIcon}
-        />
+      <Link to="/" className={styles.navPathHome} aria-label="Home">
+        <span className={styles.navPathHomeIcon} />
       </Link>
 
       {items.map(item => {
         return (
           <React.Fragment key={item.label}>
-            <img
-              src="img-logo-icons/icons/arrow-right.svg"
-              alt=""
-              className={styles.navPathArrow}
-            />
+            <span className={styles.navPathArrow} />
 
             {item.to ? (
               <Link to={item.to} className={styles.navPathLink}>

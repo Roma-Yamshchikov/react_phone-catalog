@@ -77,14 +77,12 @@ export const ProductCard: React.FC<Props> = ({ product, hideDiscount }) => {
           type="button"
           onClick={() => toggleFavorite(product)}
         >
-          <img
-            src={
+          <span
+            className={
               isFavorite
-                ? 'img-logo-icons/icons/favourites-heart-like-red.svg'
-                : 'img-logo-icons/icons/icon-favourites-Heart-like.svg'
+                ? styles.productCardFavoriteIconActive
+                : styles.productCardFavoriteIcon
             }
-            alt={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-            className={styles.productCardFavoriteButtonImage}
           />
         </button>
       </div>

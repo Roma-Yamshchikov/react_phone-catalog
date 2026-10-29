@@ -31,15 +31,21 @@
   border-bottom: 1px solid var(--color-border);
 
   &Logo {
-    display: flex;
     padding: 13px 16px;
-  }
-
-  &LogoImage {
+    box-sizing: content-box;
     width: 64px;
+    height: 22px;
+    background-image: var(--logo-url);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-origin: content-box;
+    background-position: center;
   }
 
   &Close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     padding: 0;
     background: none;
@@ -47,11 +53,11 @@
     height: 48px;
     cursor: pointer;
     border-left: 1px solid var(--color-border);
+    color: var(--color-text);
   }
 
   &CloseIcon {
-    height: 16px;
-    width: 16px;
+    @include icon('/img-logo-icons/icons/icon-close.svg');
   }
 }
 
@@ -121,9 +127,12 @@
     opacity 0.35s,
     transform 0.35s;
 
-  &Icon {
-    height: 16px;
-    width: 16px;
+  &IconFavorites {
+    @include icon('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+  }
+
+  &IconCart {
+    @include icon('/img-logo-icons/icons/icon-shopping-Cart.svg');
   }
 
   &Link {
@@ -132,6 +141,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    color: var(--color-text);
 
     &::after {
       content: '';

@@ -12,4 +12,17 @@
   }
 }
 
+@mixin icon($url, $size: 16px) {
+  display: block;
+  width: $size;
+  height: $size;
+  background-color: currentColor;
+  mask-image: url($url);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  transition: transform 0.3s;
+}
+
 @import './typography';
+

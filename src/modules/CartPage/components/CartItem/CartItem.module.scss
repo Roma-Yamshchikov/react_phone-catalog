@@ -6,6 +6,7 @@
   gap: 16px;
   padding: 16px;
   background-color: var(--color-bg-card);
+  border: 1px solid var(--color-card-border);
   width: 100%;
 
   @include on-tablet {
@@ -37,6 +38,7 @@
     border: none;
     cursor: pointer;
     opacity: 0.6;
+    color: var(--color-text);
     transition: opacity 0.3s;
 
     &:focus-visible {
@@ -51,9 +53,7 @@
   }
 
   &CloseIcon {
-    display: block;
-    width: 16px;
-    height: 16px;
+    @include icon('/img-logo-icons/icons/icon-close.svg');
   }
 
   &Photo {
@@ -118,7 +118,7 @@
     font-size: 16px;
     color: var(--color-text);
     background: none;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-button-border);
     cursor: pointer;
     transition:
       border-color 0.3s,
@@ -136,9 +136,17 @@
 
     &:disabled {
       color: var(--color-text-secondary);
-      border-color: var(--color-border);
+      border-color: var(--color-button-border);
       cursor: default;
     }
+  }
+
+  &IconMinus {
+    @include icon('/img-logo-icons/icons/icon-minus.svg');
+  }
+
+  &IconPlus {
+    @include icon('/img-logo-icons/icons/icon-plus.svg');
   }
 
   &Count {

@@ -49,9 +49,10 @@ export const PicturesSlider = () => {
       <button
         type="button"
         className={styles.picturesSliderPrev}
+        aria-label="Previous slide"
         onClick={handlePrev}
       >
-        ‹
+        <span aria-hidden="true">‹</span>
       </button>
 
       <div className={styles.picturesSliderWindow}>
@@ -81,9 +82,10 @@ export const PicturesSlider = () => {
       <button
         type="button"
         className={styles.picturesSliderNext}
+        aria-label="Next slide"
         onClick={handleNext}
       >
-        ›
+        <span aria-hidden="true">›</span>
       </button>
 
       <div className={styles.picturesSliderDashes}>

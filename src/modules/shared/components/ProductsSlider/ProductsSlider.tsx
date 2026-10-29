@@ -62,11 +62,7 @@ export const ProductsSlider: React.FC<Props> = ({
             onClick={() => scrollTrack(-1)}
             disabled={isStart}
           >
-            <img
-              src="img-logo-icons/icons/arrow-left.svg"
-              alt=""
-              className={styles.productsSliderIcon}
-            />
+            <span className={styles.productsSliderIconPrev} />
           </button>
 
           <button
@@ -76,11 +72,7 @@ export const ProductsSlider: React.FC<Props> = ({
             onClick={() => scrollTrack(1)}
             disabled={isEnd}
           >
-            <img
-              src="img-logo-icons/icons/arrow-right.svg"
-              alt=""
-              className={styles.productsSliderIcon}
-            />
+            <span className={styles.productsSliderIconNext} />
           </button>
         </div>
       </div>

@@ -29,13 +29,14 @@
 
   &Link {
     text-decoration: none;
+    transition: transform 0.3s;
   }
 
   &Title {
     display: block;
     margin-top: 24px;
     color: var(--color-text);
-    
+
     @include h3;
   }
 
@@ -63,14 +64,14 @@
   }
 
   @media (hover: hover) {
-    &Link:hover &Photo {
-      box-shadow:
-        0 0 0 1px var(--color-accent),
-        0 8px 32px rgb(144 91 255 / 30%);
+    &Link:hover {
+      transform: translateY(-4px);
     }
-  }
 
-  @media (hover: hover) {
+    &Link:hover &Photo {
+      box-shadow: var(--shadow-photo-hover);
+    }
+
     &Link:hover &Image {
       transform: scale(1.1);
     }

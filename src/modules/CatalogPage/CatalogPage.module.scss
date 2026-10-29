@@ -51,7 +51,7 @@
     border: 1px solid var(--color-border);
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23F1F2F9' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-image: var(--select-arrow);
     background-repeat: no-repeat;
     background-position: right 12px center;
     transition: border-color 0.3s;
@@ -93,21 +93,25 @@
     height: 48px;
     padding: 0 24px;
     font-family: inherit;
-    color: var(--color-text);
+    color: var(--color-text-on-accent);
     background-color: var(--color-accent);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
 
     @include buttons;
 
     &:focus-visible {
       background-color: var(--color-accent-hover);
+      box-shadow: var(--shadow-button-hover);
     }
 
     @media (hover: hover) {
       &:hover {
         background-color: var(--color-accent-hover);
+        box-shadow: var(--shadow-button-hover);
       }
     }
   }

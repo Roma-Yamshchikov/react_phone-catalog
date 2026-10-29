@@ -24,12 +24,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             removeFromCart(item.id);
           }}
         >
-          <img
-            src="img-logo-icons/icons/icon-close.svg"
-            alt=""
-            className={styles.cartItemCloseIcon}
-          />
+          <span className={styles.cartItemCloseIcon} />
         </button>
+
         <Link to={productLink} className={styles.cartItemPhoto}>
           <img
             src={item.product.image}
@@ -37,6 +34,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             className={styles.cartItemImage}
           />
         </Link>
+
         <Link to={productLink} className={styles.cartItemTitle}>
           {item.product.name}
         </Link>
@@ -53,9 +51,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
               updateQuantity(item.id, item.quantity - 1);
             }}
           >
-            -
+            <span className={styles.cartItemIconMinus} />
           </button>
           <span className={styles.cartItemCount}>{item.quantity}</span>
+
           <button
             type="button"
             className={styles.cartItemButton}
@@ -64,7 +63,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
               updateQuantity(item.id, item.quantity + 1);
             }}
           >
-            +
+            <span className={styles.cartItemIconPlus} />
           </button>
         </div>
         <p className={styles.cartItemPrice}>

@@ -19,10 +19,12 @@
     gap: 16px;
   }
 
-    &Icon {
-    display: block;
-    width: 16px;
-    height: 16px;
+  &IconPrev {
+    @include icon('/img-logo-icons/icons/arrow-left.svg');
+  }
+
+  &IconNext {
+    @include icon('/img-logo-icons/icons/arrow-right.svg');
   }
 
   &Button {
@@ -33,17 +35,15 @@
     height: 32px;
     padding: 0;
     border: 1px solid var(--color-border);
-    cursor: pointer;
     background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    cursor: pointer;
     transition: background-color 0.3s;
 
     &:disabled {
       cursor: default;
       background-color: var(--color-bg);
-
-      .productsSliderIcon {
-        opacity: 0.4;
-      }
+      color: var(--color-text-secondary);
     }
 
     &:focus-visible {

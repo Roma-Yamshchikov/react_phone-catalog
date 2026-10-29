@@ -27,11 +27,7 @@ export const BackToTop = () => {
       aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
-      <img
-        src="img-logo-icons/icons/arrow-up.svg"
-        alt=""
-        className={styles.backToTopIcon}
-      />
+      <span className={styles.backToTopIcon} />
     </button>
   );
 };

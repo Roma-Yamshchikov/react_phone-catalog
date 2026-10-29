@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={current === 1}
         onClick={() => onPageChange(current - 1)}
       >
-        ‹
+        <span aria-hidden="true">‹</span>
       </button>
 
       <ul className={styles.paginationList}>
@@ -56,7 +56,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={current === total}
         onClick={() => onPageChange(current + 1)}
       >
-        ›
+        <span aria-hidden="true">›</span>
       </button>
     </nav>
   );

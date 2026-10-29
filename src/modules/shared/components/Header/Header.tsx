@@ -6,6 +6,7 @@ import { Menu } from '../Menu';
 import { CartContext } from '../../../../store/CartContext';
 import { FavoritesContext } from '../../../../store/FavoritesContext';
 import { Counter } from '../Counter';
+import { ThemeToggle } from '../ThemeToggle';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -23,13 +24,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.logo}>
-        <img
-          src="img-logo-icons/logo.svg"
-          alt="Nice Gadgets"
-          className={styles.logoImage}
-        />
-      </Link>
+      <Link to="/" className={styles.logo} aria-label="Nice Gadgets"></Link>
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>
@@ -56,21 +51,23 @@ export const Header = () => {
         </ul>
       </nav>
 
+      <ThemeToggle />
+
       <div className={styles.action}>
-        <Link to="/favorites" className={styles.actionLink}>
-          <img
-            className={styles.actionItem}
-            src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
-            alt="Favorites"
-          />
+        <Link
+          to="/favorites"
+          className={styles.actionLink}
+          aria-label="Favorites"
+        >
+          <span
+            className={styles.actionItemFavorites}
+            aria-hidden="true"
+          ></span>
           <Counter value={favorites.length} />
         </Link>
-        <Link to="/cart" className={styles.actionLink}>
-          <img
-            className={styles.actionItem}
-            src="img-logo-icons/icons/icon-shopping-Cart.svg"
-            alt="Cart"
-          />
+
+        <Link to="/cart" className={styles.actionLink} aria-label="Cart">
+          <span className={styles.actionItemCart} aria-hidden="true"></span>
           <Counter value={totalCount} />
         </Link>
       </div>
@@ -78,13 +75,10 @@ export const Header = () => {
       <button
         type="button"
         className={styles.menuButton}
+        aria-label="Open menu"
         onClick={() => setIsMenuOpen(true)}
       >
-        <img
-          src="img-logo-icons/icons/icon-menu-burger.svg"
-          alt="Open menu"
-          className={styles.menuIcon}
-        />
+        <span className={styles.menuIcon} aria-hidden="true" />
       </button>
 
       <Menu isOpen={isMenuOpen} onClose={closeMenu} />

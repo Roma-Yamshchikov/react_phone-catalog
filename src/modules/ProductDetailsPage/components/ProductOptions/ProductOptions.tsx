@@ -114,14 +114,12 @@ export const ProductOptions: React.FC<Props> = ({
             })}
             onClick={() => toggleFavorite(product)}
           >
-            <img
-              src={
+            <span
+              className={
                 isFavorite
-                  ? 'img-logo-icons/icons/favourites-heart-like-red.svg'
-                  : 'img-logo-icons/icons/icon-favourites-Heart-like.svg'
+                  ? styles.productOptionsFavoriteIconActive
+                  : styles.productOptionsFavoriteIcon
               }
-              alt="Add to favorites"
-              className={styles.productOptionsFavoriteButtonImage}
             />
           </button>
         </div>

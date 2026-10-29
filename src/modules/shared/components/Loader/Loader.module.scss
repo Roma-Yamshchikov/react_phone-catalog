@@ -26,8 +26,8 @@
 
     &::after {
       inset: 8px;
-      border-left-color: var(--color-text);
-      border-right-color: var(--color-text);
+      border-left-color: var(--color-loader-ring);
+      border-right-color: var(--color-loader-ring);
       animation: loader-spin 0.9s linear infinite reverse;
     }
   }

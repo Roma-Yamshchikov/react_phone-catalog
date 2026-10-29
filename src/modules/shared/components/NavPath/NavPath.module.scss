@@ -4,33 +4,33 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--color-text-secondary);
 
   &Home {
     display: flex;
+    color: var(--color-text);
   }
 
   &HomeIcon {
-    height: 16px;
-    width: 16px;
+    @include icon('/img-logo-icons/icons/icon-home.svg');
   }
 
   &Arrow {
-    height: 16px;
-    width: 16px;
+    @include icon('/img-logo-icons/icons/arrow-right.svg');
   }
 
   &Link {
-    @include small-text;
-
     text-decoration: none;
     color: var(--color-text);
     padding-top: 3px;
+
+    @include small-text;
   }
 
   &Current {
-    @include small-text;
-
     padding-top: 3px;
     color: var(--color-text-secondary);
+
+    @include small-text;
   }
 }

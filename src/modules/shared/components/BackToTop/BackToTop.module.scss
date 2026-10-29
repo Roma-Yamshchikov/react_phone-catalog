@@ -13,7 +13,7 @@
   padding: 0;
   color: var(--color-text);
   background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-button-border);
   cursor: pointer;
   transition: background-color 0.3s;
 
@@ -28,8 +28,6 @@
   }
 
   &Icon {
-    display: block;
-    width: 16px;
-    height: 16px;
+    @include icon('/img-logo-icons/icons/arrow-up.svg');
   }
 }

@@ -35,19 +35,14 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <div className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
       <div className={styles.top}>
-        <Link to="/" className={styles.topLogo} onClick={onClose}>
-          <img
-            src="img-logo-icons/logo.svg"
-            alt="Nice Gadgets"
-            className={styles.topLogoImage}
-          />
-        </Link>
+        <Link
+          to="/"
+          className={styles.topLogo}
+          aria-label="Nice Gadgets"
+          onClick={onClose}
+        ></Link>
         <button className={styles.topClose} type="button" onClick={onClose}>
-          <img
-            src="img-logo-icons/icons/icon-close.svg"
-            alt="Close menu"
-            className={styles.topCloseIcon}
-          />
+          <span className={styles.topCloseIcon}></span>
         </button>
       </div>
 
@@ -88,21 +83,19 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
         <NavLink
           to="/favorites"
           className={getBottomLinkClass}
+          aria-label="Favorites"
           onClick={onClose}
         >
-          <img
-            src="img-logo-icons/icons/icon-favourites-Heart-like.svg"
-            alt="Favorites"
-            className={styles.bottomIcon}
-          />
+          <span className={styles.bottomIconFavorites} aria-hidden="true" />
           <Counter value={favorites.length} />
         </NavLink>
-        <NavLink to="/cart" className={getBottomLinkClass} onClick={onClose}>
-          <img
-            src="img-logo-icons/icons/icon-shopping-Cart.svg"
-            alt="Cart"
-            className={styles.bottomIcon}
-          />
+        <NavLink
+          to="/cart"
+          className={getBottomLinkClass}
+          onClick={onClose}
+          aria-label="Cart"
+        >
+          <span className={styles.bottomIconCart} aria-hidden="true" />
           <Counter value={totalCount} />
         </NavLink>
       </div>

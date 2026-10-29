@@ -18,13 +18,17 @@
 }
 
 .menuButton {
-  border: none;
-  padding: 0;
-  background: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 48px;
   width: 48px;
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  border: none;
   border-left: 1px solid var(--color-border);
+  cursor: pointer;
 
   @include on-tablet {
     display: none;
@@ -32,37 +36,36 @@
 }
 
 .menuIcon {
-  height: 16px;
-  width: 16px;
+  @include icon('/img-logo-icons/icons/icon-menu-burger.svg');
 }
 
 .logo {
-  display: flex;
+  will-change: transform;
+  box-sizing: content-box;
+  width: 64px;
+  height: 22px;
   padding: 13px 16px;
-  margin-right: 16px;
+  background-image: var(--logo-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+  background-position: center;
+  transition: transform 0.3s;
 
   @include on-desktop {
-    margin-right: 24px;
+    width: 80px;
+    height: 28px;
     padding: 18px 24px;
   }
 
-  &Image {
-    width: 64px;
-    transition: transform 0.3s;
-
-    @include on-desktop {
-      width: 80px;
-    }
-  }
-
   @media (hover: hover) {
-    &:hover .logoImage {
-      transform: scale(1.2);
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
-  &:focus-visible .logoImage {
-    transform: scale(1.2);
+  &:focus-visible {
+    transform: scale(1.1);
   }
 }
 
@@ -129,10 +132,12 @@
     display: flex;
   }
 
-  &Item {
-    height: 16px;
-    width: 16px;
-    transition: transform 0.3s;
+  &ItemFavorites {
+    @include icon('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+  }
+
+  &ItemCart {
+    @include icon('/img-logo-icons/icons/icon-shopping-Cart.svg');
   }
 
   &Link {
@@ -143,15 +148,18 @@
     height: 48px;
     width: 48px;
     border-left: 1px solid var(--color-border);
+    color: var(--color-text);
 
     @include on-desktop {
       height: 64px;
       width: 64px;
     }
+  }
 
-    &:hover .actionItem,
-    &:focus-visible .actionItem {
-      transform: scale(1.3);
-    }
+  &Link:hover &ItemFavorites,
+  &Link:hover &ItemCart,
+  &Link:focus-visible &ItemFavorites,
+  &Link:focus-visible &ItemCart {
+    transform: scale(1.2);
   }
 }
