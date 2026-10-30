@@ -69,6 +69,49 @@
   }
 }
 
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+
+  &Icon {
+    @include icon('/img-logo-icons/icons/search.svg');
+  }
+
+  @media (hover: hover) {
+    &:hover &Icon {
+      transform: scale(1.2);
+    }
+  }
+
+  &:focus-visible &Icon {
+    transform: scale(1.2);
+  }
+}
+
+.searchPopover {
+  position: absolute;
+  top: 52px;
+  right: 8px;
+  z-index: 3;
+  width: 260px;
+  padding: 5px;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card-hover);
+
+  @include on-desktop {
+    top: 68px;
+  }
+}
+
 .nav {
   display: none;
   height: 100%;

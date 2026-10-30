@@ -23,35 +23,46 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const page = Number(searchParams.get('page')) || 1;
+  const query = searchParams.get('query') || '';
 
   const handlePerPageChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
+    const params = new URLSearchParams(searchParams);
+
     if (evt.target.value === 'all') {
-      searchParams.delete('perPage');
+      params.delete('perPage');
     } else {
-      searchParams.set('perPage', evt.target.value);
+      params.set('perPage', evt.target.value);
     }
 
-    searchParams.delete('page');
-    setSearchParams(searchParams);
+    params.delete('page');
+    setSearchParams(params);
   };
 
   const handleSortChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('sort', evt.target.value);
-    searchParams.delete('page');
-    setSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', evt.target.value);
+    params.delete('page');
+    setSearchParams(params);
   };
 
   const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+
     if (newPage === 1) {
-      searchParams.delete('page');
+      params.delete('page');
     } else {
-      searchParams.set('page', String(newPage));
+      params.set('page', String(newPage));
     }
 
-    setSearchParams(searchParams);
+    setSearchParams(params);
   };
 
-  const visibleProducts = [...products].sort((a, b) => {
+  const filteredProducts = products.filter(product => {
+    return product.name.toLowerCase().includes(query.toLowerCase().trim());
+  });
+
+  const visibleProducts = [...filteredProducts].sort((a, b) => {
     switch (sort) {
       case 'title':
         return a.name.localeCompare(b.name);
@@ -93,12 +104,23 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   );
 
   const totalPages = Math.ceil(visibleProducts.length / itemsPerPage);
+  const isEmptyCategory = !isLoading && !hasError && products.length === 0;
+
+  const isNothingFound =
+    !isLoading &&
+    !hasError &&
+    products.length > 0 &&
+    filteredProducts.length === 0;
+
+  const isListVisible = !isLoading && !hasError && filteredProducts.length > 0;
 
   return (
     <div className={styles.catalogPage}>
       <NavPath items={[{ label: categoryLabel }]} />
       <h1 className={styles.catalogPageTitle}>{title}</h1>
-      <p className={styles.catalogPageCount}>{products.length} models</p>
+      <p className={styles.catalogPageCount}>
+        {filteredProducts.length} models
+      </p>
 
       <div className={styles.catalogPageFilters}>
         <label className={styles.catalogPageField}>
@@ -149,13 +171,17 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
         </div>
       )}
 
-      {!isLoading && !hasError && products.length === 0 && (
+      {isEmptyCategory && (
         <p className={styles.catalogPageMessage}>There are no {category} yet</p>
       )}
 
-      {!isLoading && !hasError && products.length > 0 && (
-        <ProductList products={pageProducts} />
+      {isNothingFound && (
+        <p className={styles.catalogPageMessage}>
+          There are no {category} matching the query
+        </p>
       )}
+
+      {isListVisible && <ProductList products={pageProducts} />}
 
       {!isLoading && !hasError && totalPages > 1 && (
         <Pagination

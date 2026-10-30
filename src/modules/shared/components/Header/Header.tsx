@@ -7,6 +7,7 @@ import { CartContext } from '../../../../store/CartContext';
 import { FavoritesContext } from '../../../../store/FavoritesContext';
 import { Counter } from '../Counter';
 import { ThemeToggle } from '../ThemeToggle';
+import { Search } from '../Search';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -14,6 +15,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const { cartItems } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
@@ -52,6 +54,24 @@ export const Header = () => {
       </nav>
 
       <ThemeToggle />
+
+      <button
+        type="button"
+        aria-label="Search"
+        className={styles.searchButton}
+        aria-expanded={isSearchOpen}
+        onClick={() => {
+          setIsSearchOpen(curent => !curent);
+        }}
+      >
+        <span aria-hidden="true" className={styles.searchButtonIcon}></span>
+      </button>
+
+      {isSearchOpen && (
+        <div className={styles.searchPopover}>
+          <Search />
+        </div>
+      )}
 
       <div className={styles.action}>
         <Link
